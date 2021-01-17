@@ -1,0 +1,34 @@
+{
+    "Header": {
+
+        "title": "Hvad er dit behov for sol celler?",
+        "paragraph": "Aflæs dit energy forbrug på en normal hverdag og få en gratis beregning på om du får gavn af sol celler."
+
+    },
+    "About": {
+        "paragraph": "Vi vil gerne udvide mængden af grøn energi og få den ud til den normale borger.",
+        "Why": [
+            "Eventuelle energi besparinger",
+            "For ikke lave den forkerte investering"
+        ]
+    },
+    "Beregner" : {}, 
+    "Services": [{
+            "icon": "fa fa-usd",
+            "name": "Spar penge",
+            "text": "Enten sparer du penge ved ikke at købe sol celler du ikke har brug for ellers sparer du penge ved at købe sol celler du har brug for."
+        },
+        {
+            "icon": "fa fa-cloud",
+            "name": "Vi analyserer dit energi forbrug",
+            "text": "Vi bruger din data til at hjælpe dig med en investering."
+        },
+        {
+            "icon": "fa fa-bolt",
+            "name": "Grøn energi er bedst når det bliver brugt",
+            "text": "Vi giver dig en grønnere og bedre omstilling efter dine behov."
+        }
+
+
+    ]
+}

@@ -1,0 +1,1 @@
+# Landing page for a future solar panel energy calculator specific for Denmark
