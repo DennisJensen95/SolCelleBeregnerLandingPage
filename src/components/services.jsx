@@ -6,7 +6,7 @@ export class Services extends Component {
       <div id="services" className="text-center">
         <div className="container">
           <div className="section-title">
-            <h2>Vores service</h2>
+            <h2>Vores vision</h2>
           </div>
           <div className="row">
             {this.props.data
