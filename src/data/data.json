@@ -12,6 +12,10 @@
             "For ikke lave den forkerte investering"
         ]
     },
+    "Energi" : {
+        "paragraph": "Dækning af Danmarks totale energi forbrug i vindmølle energi og solcelle energi.",
+        "source": "* Data er hentet fra eloverblik.dk"
+    },
     "Beregner" : {}, 
     "Services": [{
             "icon": "fa fa-usd",
