@@ -12,6 +12,9 @@
             "For ikke lave den forkerte investering"
         ]
     },
+    "Energi" : {
+        "paragraph": "Oversigten over hvilken slags energi Danmark forbruger. De tre former for energi udgøre den totale energi brugt i Danmark på det sidste år, måned, uge eller dag"
+    },
     "Beregner" : {}, 
     "Services": [{
             "icon": "fa fa-usd",
