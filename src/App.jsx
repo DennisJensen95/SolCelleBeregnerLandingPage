@@ -5,6 +5,7 @@ import Beregner from './components/beregner';
 import About from './components/about';
 import Services from './components/services';
 import JsonData from './data/data.json';
+import EnergyConsumption from "./components/energy_consumption_dk"
 
 export class App extends Component {
   state = {
@@ -23,6 +24,7 @@ export class App extends Component {
       <div>
         <Navigation />
         <Header data={this.state.landingPageData.Header} />
+        <EnergyConsumption />
         <About data={this.state.landingPageData.About} />
         <Services data={this.state.landingPageData.Services} />
         <Beregner data={this.state.landingPageData.Beregner} />
