@@ -25,7 +25,9 @@ export class energy_consumption extends Component {
                         // Include a dollar sign in the ticks
                         callback: function(value, index, values) {
                             return value + " %";
-                        }
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 100
                     }
                 }]
             }
@@ -37,14 +39,15 @@ export class energy_consumption extends Component {
         this.chartRef = React.createRef();
         this.state = {
             barPlotData: this.barPlotData,
-            powerData: null
+            powerData: null,
+            sqlURL: 'https://www.energidataservice.dk/proxy/api/datastore_search_sql?sql='
         }
       }
 
     
     
     getDataFromElOverblik() {
-        axios.get("https://www.energidataservice.dk/proxy/api/datastore_search?resource_id=electricitybalancenonv&limit=8760", 
+        axios.get('https://www.energidataservice.dk/proxy/api/datastore_search_sql?sql=SELECT * from "electricitybalancenonv" ORDER BY "HourDK" DESC LIMIT 8760', 
             {
                 crossDomain: true
             }
@@ -63,8 +66,6 @@ export class energy_consumption extends Component {
 
     calculatePercentagePower() {
         const records = this.state.powerData.result.records;
-        console.log(this.state.powerData)
-        console.log(records);
         const day = 1*24;
         const week = 7*24;
         const month = 30*24;
@@ -74,6 +75,10 @@ export class energy_consumption extends Component {
         var total_solar = 0;
         var windmill_energy = [0, 0, 0, 0];
         var solar_energy = [0, 0, 0, 0];
+
+        console.log("Energy today: " + records[0]["HourDK"]);
+        console.log("Energy last date: " + records[records.length-1]["HourDK"]);
+
         for (var i=0; i < records.length; i++) {
             total_consumption += records[i].TotalLoad;
             total_windmill += records[i].OffshoreWindPower + records[i].OnshoreWindPower;
@@ -93,18 +98,15 @@ export class energy_consumption extends Component {
             }
         } 
 
-        var newBarPlot = this.barPlotData;
-        newBarPlot.data.datasets[0].data = windmill_energy;
-        newBarPlot.data.datasets[1].data = solar_energy;
+        
+        this.barPlotData.data.datasets[0].data = windmill_energy;
+        this.barPlotData.data.datasets[1].data = solar_energy;
 
 
         this.setState({})
-
-        console.log(this.state.barPlotData.data.datasets[0].data)
     }
 
     componentDidMount() {
-        console.log(this.state.daily_numbers)
         this.getDataFromElOverblik();
     }
     
