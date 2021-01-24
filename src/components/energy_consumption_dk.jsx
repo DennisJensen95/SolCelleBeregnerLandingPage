@@ -72,28 +72,33 @@ export class energy_consumption extends Component {
         var total_consumption = 0;
         var total_windmill = 0;
         var total_solar = 0;
+        var windmill_energy = [0, 0, 0, 0];
+        var solar_energy = [0, 0, 0, 0];
         for (var i=0; i < records.length; i++) {
             total_consumption += records[i].TotalLoad;
             total_windmill += records[i].OffshoreWindPower + records[i].OnshoreWindPower;
             total_solar += records[i].SolarPower;
-            if (i+1 == day) {
-                // this.state.barPlotData.data.datasets[0].data[3] = 100;
-                this.state.barPlotData.data.datasets[0].data[3] = total_windmill/total_consumption*100;
-                this.state.barPlotData.data.datasets[1].data[3] = total_solar/total_consumption*100;
-            } else if (i+1 == week) {
-                // this.state.barPlotData.data.datasets[0].data[2] = 100;
-                this.state.barPlotData.data.datasets[0].data[2] = total_windmill/total_consumption*100;
-                this.state.barPlotData.data.datasets[1].data[2] = total_solar/total_consumption*100;
-            } else if (i+1 == month) {
-                // this.state.barPlotData.data.datasets[0].data[1] = 100;
-                this.state.barPlotData.data.datasets[0].data[1] = total_windmill/total_consumption*100;
-                this.state.barPlotData.data.datasets[1].data[1] = total_solar/total_consumption*100;
-            } else if (i+1 == year) {
-                // this.state.barPlotData.data.datasets[0].data[0] = 100;
-                this.state.barPlotData.data.datasets[0].data[0] = total_windmill/total_consumption*100;
-                this.state.barPlotData.data.datasets[1].data[0] = total_solar/total_consumption*100;
+            if (i+1 === day) {
+                windmill_energy[3] = Number((total_windmill/total_consumption*100).toFixed(1));
+                solar_energy[3] = Number((total_solar/total_consumption*100).toFixed(1));
+            } else if (i+1 === week) {
+                windmill_energy[2] = Number((total_windmill/total_consumption*100).toFixed(1));
+                solar_energy[2] = Number((total_solar/total_consumption*100).toFixed(1));
+            } else if (i+1 === month) {
+                windmill_energy[1] = Number((total_windmill/total_consumption*100).toFixed(1));
+                solar_energy[1] = Number((total_solar/total_consumption*100).toFixed(1));
+            } else if (i+1 === year) {
+                windmill_energy[0] = Number((total_windmill/total_consumption*100).toFixed(1));
+                solar_energy[0] = Number((total_solar/total_consumption*100).toFixed(1));
             }
         } 
+
+        var newBarPlot = this.barPlotData;
+        newBarPlot.data.datasets[0].data = windmill_energy;
+        newBarPlot.data.datasets[1].data = solar_energy;
+
+
+        this.setState({})
 
         console.log(this.state.barPlotData.data.datasets[0].data)
     }
