@@ -46,68 +46,48 @@ export class energy_consumption extends Component {
 
     
     
-    getDataFromElOverblik() {
-        axios.get('https://www.energidataservice.dk/proxy/api/datastore_search_sql?sql=SELECT * from "electricitybalancenonv" ORDER BY "HourDK" DESC LIMIT 8760', 
+    getDataFromElOverblik(number_days, idx) {
+        const query = 'SELECT SUM("SolarPower") AS SolarPower, SUM("TotalLoad") AS TotalLoad, SUM("OffshoreWindPower") AS Offshore, SUM("OnshoreWindPower") AS Onshore FROM (SELECT * from "electricitybalancenonv" ORDER BY "HourDK" DESC LIMIT ' + number_days + ') AS subquery' 
+        return axios.get(this.state.sqlURL + query, 
             {
                 crossDomain: true
             }
         )
-            .then(res => {
-            const powerData = res.data;
-            this.setState({powerData: powerData});
-            this.calculatePercentagePower();
-            this.myChart = new Chart(this.chartRef.current, {
-                type: 'bar',
-                data: this.state.barPlotData.data,
-                options: this.state.barPlotData.options
-            });
-        })   
+        .then(res => {
+            const data = res.data.result.records[0];
+            var wind_percent = ((data["offshore"] + data["onshore"])/data["totalload"]*100).toFixed(2);
+            var solar_percent = (data["solarpower"]/data["totalload"]*100).toFixed(2);
+            this.barPlotData.data.datasets[0].data[idx] = wind_percent;
+            this.barPlotData.data.datasets[1].data[idx] = solar_percent;
+        }).catch(err => console.log(err));
     }
 
-    calculatePercentagePower() {
-        const records = this.state.powerData.result.records;
-        const day = 1*24;
-        const week = 7*24;
-        const month = 30*24;
-        const year = 365*24;
-        var total_consumption = 0;
-        var total_windmill = 0;
-        var total_solar = 0;
-        var windmill_energy = [0, 0, 0, 0];
-        var solar_energy = [0, 0, 0, 0];
+    setupBarChart() {
+        console.log("Bar chart");
+        this.myChart = new Chart(this.chartRef.current, {
+            type: 'bar',
+            data: this.state.barPlotData.data,
+            options: this.state.barPlotData.options
+        });
+    }
 
-        console.log("Energy today: " + records[0]["HourDK"]);
-        console.log("Energy last date: " + records[records.length-1]["HourDK"]);
-
-        for (var i=0; i < records.length; i++) {
-            total_consumption += records[i].TotalLoad;
-            total_windmill += records[i].OffshoreWindPower + records[i].OnshoreWindPower;
-            total_solar += records[i].SolarPower;
-            if (i+1 === day) {
-                windmill_energy[3] = Number((total_windmill/total_consumption*100).toFixed(1));
-                solar_energy[3] = Number((total_solar/total_consumption*100).toFixed(1));
-            } else if (i+1 === week) {
-                windmill_energy[2] = Number((total_windmill/total_consumption*100).toFixed(1));
-                solar_energy[2] = Number((total_solar/total_consumption*100).toFixed(1));
-            } else if (i+1 === month) {
-                windmill_energy[1] = Number((total_windmill/total_consumption*100).toFixed(1));
-                solar_energy[1] = Number((total_solar/total_consumption*100).toFixed(1));
-            } else if (i+1 === year) {
-                windmill_energy[0] = Number((total_windmill/total_consumption*100).toFixed(1));
-                solar_energy[0] = Number((total_solar/total_consumption*100).toFixed(1));
-            }
-        } 
-
+    async setupPowerData() {
+        var year = 365*24*2;
+        var month = 30*24*2;
+        var week = 7*24*2;
+        var day = 1*24*2;
         
-        this.barPlotData.data.datasets[0].data = windmill_energy;
-        this.barPlotData.data.datasets[1].data = solar_energy;
+        await this.getDataFromElOverblik(day, 3);
+        await this.getDataFromElOverblik(week, 2);
+        await this.getDataFromElOverblik(month, 1);
+        await this.getDataFromElOverblik(year, 0);
 
-
-        this.setState({})
+        this.setupBarChart();
     }
+
 
     componentDidMount() {
-        this.getDataFromElOverblik();
+        this.setupPowerData(); 
     }
     
     render() {
