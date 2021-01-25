@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
 export class Navigation extends Component {
+
+
   render() {
     return (
       <nav id="menu" className="navbar navbar-default navbar-fixed-top">
@@ -29,8 +31,15 @@ export class Navigation extends Component {
           >
             <ul className="nav navbar-nav navbar-right">
               <li>
-                <a href="#about" className="page-scroll">
-                  About
+                <a href="/login">
+                  Login
+                </a>
+              </li>
+            </ul>
+            <ul className="nav navbar-scroll navbar-nav navbar-right">
+              <li>
+                <a href="#beregner" className="page-scroll">
+                  Beregner
                 </a>
               </li>
               <li>
@@ -39,6 +48,7 @@ export class Navigation extends Component {
                 </a>
               </li>
             </ul>
+            
           </div>
         </div>
       </nav>
