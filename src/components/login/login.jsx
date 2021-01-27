@@ -26,6 +26,7 @@ export class Login extends Component {
         <div class={this.state.sideActive} id="container">
           <div class="sign-form-container sign-up-container">
             <form class="sign-form" action="#">
+              <h1>Opret konto</h1>
               <span class="sign-span">Indtast din email for at oprette en konto</span>
               <input class="sign-input" type="text" placeholder="Name" />
               <input class="sign-input" type="email" placeholder="Email" />
@@ -33,6 +34,7 @@ export class Login extends Component {
               <button class="sign-button">Tilmeld</button>
             </form>
           </div>
+
           <div class="sign-form-container sign-in-container">
             <form class="sign-form" action="#">
               <h1>Login</h1>
@@ -44,10 +46,10 @@ export class Login extends Component {
           </div>
           <div class="overlay-container">
             <div class="sign-overlay">
-              <div class="overlay-panel overlay-left">
+              <div class="overlay-panel overlay-left" >
                 <h1>Velkommen tilbage</h1>
                 <p></p>
-                <button onClick={this.changeToSignIn} class="ghost" id="signIn">Login</button>
+                <button onClick={this.changeToSignIn} class="ghost sign-button" id="signIn">Login</button>
               </div>
               <div class="overlay-panel overlay-right">
                 <h1>Opret konto</h1>
