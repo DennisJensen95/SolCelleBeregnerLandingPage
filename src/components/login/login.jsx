@@ -1,4 +1,4 @@
-import React, { Component, useState} from "react";
+import React, { Component } from "react";
 import './login.css'
 
 export class Login extends Component {
@@ -26,7 +26,7 @@ export class Login extends Component {
         <div class={this.state.sideActive} id="container">
           <div class="sign-form-container sign-up-container">
             <form class="sign-form" action="#">
-              <h1>Opret konto</h1>
+              <h1 class="sign-h1">Opret konto</h1>
               <span class="sign-span">Indtast din email for at oprette en konto</span>
               <input class="sign-input" type="text" placeholder="Name" />
               <input class="sign-input" type="email" placeholder="Email" />
@@ -34,26 +34,25 @@ export class Login extends Component {
               <button class="sign-button">Tilmeld</button>
             </form>
           </div>
-
           <div class="sign-form-container sign-in-container">
             <form class="sign-form" action="#">
-              <h1>Login</h1>
+              <h1 class="sign-h1">Login</h1>
               <input class="sign-input" type="email" placeholder="Email" />
               <input class="sign-input" type="password" placeholder="Password" />
-              <a href="#">Glemt kodeord?</a>
+              <a href="/">Glemt kodeord?</a>
               <button class="sign-button">Login</button>
             </form>
           </div>
           <div class="overlay-container">
             <div class="sign-overlay">
-              <div class="overlay-panel overlay-left" >
-                <h1>Velkommen tilbage</h1>
-                <p></p>
+              <div class="overlay-panel overlay-left">
+                <h1 class="sign-h1">Velkommen tilbage</h1>
+                <p>Se dine udførte beregninger igen</p>
                 <button onClick={this.changeToSignIn} class="ghost sign-button" id="signIn">Login</button>
               </div>
               <div class="overlay-panel overlay-right">
-                <h1>Opret konto</h1>
-                <p></p>
+                <h1 class="sign-h1">Opret konto</h1>
+                <p class="sign-p">Få adgang til solcelle beregneren</p>
                 <button onClick={this.changeToSignUp} class="ghost sign-button" id="signUp">Tilmeld</button>
               </div>
             </div>

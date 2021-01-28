@@ -16,6 +16,22 @@
 	font-size: 12px;
 }
 
+.sign-h1 {
+    font-weight: bold;
+    margin: 0;
+}
+
+.sign-h2 {
+    text-align: center
+}
+
+.sign-p {
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    margin: 20px 0 30px
+}
 
 .sign-button {
 	border-radius: 20px;
@@ -168,11 +184,11 @@
 }
 
 .overlay-left {
-	transform: translateX(-20%);
+	transform: translateX(0%);
 }
 
 .sign-container.right-panel-active .overlay-left {
-	transform: translateX(0);
+	transform: translateX(100%);
 }
 
 .overlay-right {
@@ -181,5 +197,5 @@
 }
 
 .sign-container.right-panel-active .overlay-right {
-	transform: translateX(20%);
+	transform: translateX(100%);
 }
