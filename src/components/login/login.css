@@ -35,8 +35,8 @@
 
 .sign-button {
 	border-radius: 20px;
-	border: 1px solid lightsteelblue;
-	background-color: lightsteelblue;
+	border: 1px solid grey;
+	background-color: grey;
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
@@ -47,7 +47,7 @@
 }
 
 .sign-button:active {
-	transform: scale(0.95);
+    transform: scale(0.95);
 }
 
 .sign-button:focus {
@@ -150,8 +150,8 @@
 
 .sign-overlay {
 	background: #FF416C;
-	background: -webkit-linear-gradient(to right, lightskyblue, lightskyblue);
-	background: linear-gradient(to right, lightskyblue, lightskyblue);
+	background: -webkit-linear-gradient(to right, lightsteelblue, lightsteelblue);
+	background: linear-gradient(to right, lightsteelblue, lightsteelblue);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;
