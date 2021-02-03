@@ -48,7 +48,7 @@ export class Navigation extends Component {
                 </a>
               </li>
             </ul>
-            
+
           </div>
         </div>
       </nav>

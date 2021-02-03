@@ -5,10 +5,10 @@ export class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        sideActive: "sign-container",
-        email: "",
-        password: "",
-        buttonState: "sign-button"
+      sideActive: "sign-container",
+      email: "",
+      password: "",
+      buttonState: "sign-button"
     };
 
     this.changeToSignIn = this.changeToSignIn.bind(this);
@@ -16,19 +16,19 @@ export class Login extends Component {
   }
 
   setEmail(email) {
-    this.setState({email: email});
+    this.setState({ email: email });
   }
 
   setPassword(password) {
-    this.setState({password});
+    this.setState({ password });
   }
-  
+
   changeToSignUp() {
-    this.setState({sideActive: "sign-container right-panel-active"})
+    this.setState({ sideActive: "sign-container right-panel-active" })
   }
 
   changeToSignIn() {
-    this.setState({sideActive: "sign-container"})
+    this.setState({ sideActive: "sign-container" })
   }
 
   validateForm() {
@@ -40,11 +40,15 @@ export class Login extends Component {
     event.preventDefault();
   }
 
-  render () {
-
-    
-
-    return(
+  render() {
+    // const [email, setEmail] = useState('');
+    // const [password, setPassword] = useState('');
+    // const [error, setError] = useState(null);
+    // const signInWithEmailAndPasswordHandler =
+    // (event, email, password) => {
+    // event.preventDefault();
+    // };
+    return (
       <div class="sign-body">
         <div class={this.state.sideActive} id="container">
           <div class="sign-form-container sign-up-container">
@@ -70,7 +74,7 @@ export class Login extends Component {
             <div class="sign-overlay">
               <div class="overlay-panel overlay-left">
                 <h1 class="sign-h1">Velkommen tilbage</h1>
-                <p>Se dine udførte beregninger igen</p>
+                <p class="sign-p">Se dine udførte beregninger igen</p>
                 <button onClick={this.changeToSignIn} class="ghost sign-button" id="signIn">Login</button>
               </div>
               <div class="overlay-panel overlay-right">
@@ -81,8 +85,8 @@ export class Login extends Component {
             </div>
           </div>
         </div>
-    </div>
-  );
+      </div>
+    );
   }
 }
 
