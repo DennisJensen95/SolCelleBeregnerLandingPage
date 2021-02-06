@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import './login.css'
 
 export class Login extends Component {
@@ -36,18 +36,11 @@ export class Login extends Component {
     return state;
   }
 
-  handleSubmit(event) {
+  handleSubmit(event, email, password) {
     event.preventDefault();
   }
 
   render() {
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
-    // const [error, setError] = useState(null);
-    // const signInWithEmailAndPasswordHandler =
-    // (event, email, password) => {
-    // event.preventDefault();
-    // };
     return (
       <div class="sign-body">
         <div class={this.state.sideActive} id="container">
