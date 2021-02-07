@@ -39,6 +39,11 @@ export class Login extends Component {
       setError("Error signing in with password and email!");
       console.error("Error signing in with password and email", error);
     });
+
+    const { history } = this.props;
+
+    history.push("/");
+
   };
 
   setEmail(email) {

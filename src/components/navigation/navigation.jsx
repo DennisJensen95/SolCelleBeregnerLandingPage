@@ -2,6 +2,17 @@ import React, { Component } from "react";
 
 export class Navigation extends Component {
 
+  loginOrLogout() {
+    const message = this.props.user == null ? "Login" : "Account"
+    const page = this.props.user == null ? "/login" : "/profile"
+
+    const element = <a href={page}>
+      {message}
+    </a>
+    return (
+      element
+    )
+  }
 
   render() {
     return (
@@ -31,9 +42,7 @@ export class Navigation extends Component {
           >
             <ul className="nav navbar-nav navbar-right">
               <li>
-                <a href="/login">
-                  Login
-                </a>
+                {this.loginOrLogout()}
               </li>
             </ul>
             <ul className="nav navbar-scroll navbar-nav navbar-right">
