@@ -19,7 +19,7 @@ export class Navigation extends Component {
               <span className="icon-bar"></span>{" "}
             </button>
             <a className="navbar-brand page-scroll" href="#page-top">
-              Solcelle anlæg beregner
+              Danmarks grønne energi forbrug
             </a>{" "}
           </div>
 
@@ -27,18 +27,6 @@ export class Navigation extends Component {
             className="collapse navbar-collapse"
             id="bs-example-navbar-collapse-1"
           >
-            <ul className="nav navbar-nav navbar-right">
-              <li>
-                <a href="#about" className="page-scroll">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="page-scroll">
-                  Vores vision
-                </a>
-              </li>
-            </ul>
           </div>
         </div>
       </nav>

@@ -17,10 +17,10 @@ export class Header extends Component {
                     {this.props.data ? this.props.data.paragraph : "Loading"}
                   </p>
                   <a
-                    href="#beregner"
+                    href="#energy_dk"
                     className="btn btn-custom btn-lg page-scroll"
                   >
-                    Beregner
+                    Energi
                   </a>{" "}
                 </div>
               </div>
